@@ -1,18 +1,24 @@
 import React from "react";
 import HomeButton from "./HomeButton";
 type SideProps = {
-    handleClick: ()=> void
-}
+  handleClick: () => void;
+};
 
-
-const Sidemenu = ({handleClick} : SideProps ) => {
+const Sidemenu = ({ handleClick }: SideProps) => {
   return (
-    <div className="absolute z-10 flex h-full w-full flex-col gap-6 bg-green-600 opacity-90">
+    <div className="absolute z-10 flex h-screen w-full flex-col gap-6 bg-green-600 opacity-90">
       <div>
-        <button onClick={handleClick} className="border border-gray-400 text-white font-bold rounded-full text-xl p-5 m-5">X</button>
+        <button
+          onClick={handleClick}
+          className="m-5 rounded-full border border-gray-400 p-5 text-xl font-bold text-white"
+        >
+          X
+        </button>
       </div>
       <div className="px-4 pt-5 text-right text-white">
-        <h2 className="mb-5 text-right text-white text-2xl ">انضم إلى فريق الآن</h2>
+        <h2 className="mb-5 text-right text-2xl text-white ">
+          انضم إلى فريق الآن
+        </h2>
         <p className="font-bold">
           اذا كانت جميع الفرق ممتلئة فلا يمكنك الاشتراك <br />
           يمكنك المحاولة في مرة قادمة

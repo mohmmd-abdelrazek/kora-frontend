@@ -6,6 +6,7 @@ import Image from "next/image";
 import ball from "@/public/icons/football.png";
 import Pagination from "./components/Pagination";
 import HomeButton from "./components/HomeButton";
+import AdminButton from "./components/AdminButton";
 
 const Home = () => {
   const [team, setTeam] = useState("1");
@@ -40,8 +41,9 @@ const Home = () => {
           <Pagination id="2" team={team} handleClick={() => setTeam("2")} />
           <Pagination id="3" team={team} handleClick={() => setTeam("3")} />
         </div>
-        <div className="w-full flex justify-center items-center p-12 bg-white">
+        <div className="w-full flex gap-5 justify-center items-center p-12 bg-white">
           <HomeButton />
+          <AdminButton />
         </div>
       </div>
     </div>

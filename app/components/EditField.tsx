@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 
-type inputFieldPropes = {
+type EditFieldPropes = {
   sectionId: string;
   inputIndex: string;
 };
 
-const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
+const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
   const [inputValue, setInputValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -77,6 +77,32 @@ const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
     }
   };
 
+  function handleEdit() {
+    setIsDisabled(false);
+  }
+
+  async function handleDelete() {
+    const value = "";
+
+    try {
+      const response = await fetch("http://localhost:5000/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ sectionId, inputIndex, value }),
+      });
+
+      const responseData = await response.json();
+      if (responseData.success) {
+        setIsDisabled(false);
+        setInputValue("");
+      }
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
+  }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -95,7 +121,7 @@ const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
         onChange={(e) => setInputValue(e.target.value)}
         disabled={isDisabled}
         placeholder="اكتب اسمك..."
-        className="text-md h-full flex-1 rounded-lg p-2 font-bold text-text focus:outline-accent disabled:bg-green-100 disabled:w-fit max-sm:min-w-0"
+        className="text-md h-full min-w-0 flex-1 rounded-lg p-2 font-bold text-text focus:outline-accent disabled:bg-yellow-100"
       />
       <button
         type="submit"
@@ -104,8 +130,25 @@ const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
       >
         سجل
       </button>
+
+      <button
+        type="button"
+        disabled={!isDisabled}
+        onClick={handleEdit}
+        className="w-30 absolute left-14 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+      >
+        تعديل
+      </button>
+      <button
+        type="button"
+        disabled={!isDisabled}
+        onClick={handleDelete}
+        className="w-30 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+      >
+        حذف
+      </button>
     </form>
   );
 };
 
-export default InputField;
+export default EditField;
