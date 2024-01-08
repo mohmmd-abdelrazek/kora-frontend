@@ -11,21 +11,23 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://kora-api-sfwh.onrender.com/login', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await axios.post('https://kora-api-sfwh.onrender.com/login', { username, password });
+      const { token } = response.data; 
 
-      const responseData = await response.json();
-      const { token } = responseData.data;
       localStorage.setItem('token', token);
       window.location.href = '/admin';
     } catch (error) {
       console.error('Login failed', error);
-      setError("Invalid credentials");
+
+      if (axios.isAxiosError(error) && error.response) {
+        if (error.response.status === 401) {
+          setError('Invalid credentials');
+        } else {
+          setError('An error occurred during login');
+        }
+      } else {
+        setError('An error occurred during login');
+      }
     }
   };
 
