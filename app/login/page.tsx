@@ -1,32 +1,40 @@
-"use client"
-import { useState } from 'react';
-import axios from 'axios';
+"use client";
+import { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('https://kora-api-sfwh.onrender.com/login', { username, password });
-      const { token } = response.data; 
 
-      localStorage.setItem('token', token);
-      window.location.href = '/admin';
+    try {
+      const response = await fetch("https://kora-api-sfwh.onrender.com/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const responseData = await response.json();
+      const { token } = responseData.data;
+      localStorage.setItem("token", token);
+      window.location.href = "/admin";
+
     } catch (error) {
-      console.error('Login failed', error);
+      console.error("Login failed", error);
 
       if (axios.isAxiosError(error) && error.response) {
         if (error.response.status === 401) {
-          setError('Invalid credentials');
+          setError("Invalid credentials");
         } else {
-          setError('An error occurred during login');
+          setError("An error occurred during login");
         }
       } else {
-        setError('An error occurred during login');
+        setError("An error occurred during login");
       }
     }
   };
@@ -41,14 +49,14 @@ const Login = () => {
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className="text-md rounded-lg p-2 border-b border-slate-300 font-bold text-text focus:outline-accent disabled:w-fit disabled:bg-green-100 max-sm:min-w-0"
+        className="text-md rounded-lg border-b border-slate-300 p-2 font-bold text-text focus:outline-accent disabled:w-fit disabled:bg-green-100 max-sm:min-w-0"
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="text-md rounded-lg p-2 font-bold border-b border-slate-300 text-text focus:outline-accent disabled:w-fit disabled:bg-green-100 max-sm:min-w-0"
+        className="text-md rounded-lg border-b border-slate-300 p-2 font-bold text-text focus:outline-accent disabled:w-fit disabled:bg-green-100 max-sm:min-w-0"
       />
       <button
         className="w-30 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
@@ -57,7 +65,6 @@ const Login = () => {
         Login
       </button>
       {error && <p>{error}</p>}
-
     </form>
   );
 };
