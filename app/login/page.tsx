@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/login', {
+      const response = await axios.post('https://kora-api-sfwh.onrender.com/login', {
         username,
         password,
       });
