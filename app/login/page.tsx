@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://kora-api-sfwh.onrender.com/api/login", {
+      const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,22 +20,18 @@ const Login = () => {
       });
 
       const responseData = await response.json();
-      const { token } = responseData.data;
-      localStorage.setItem("token", token);
-      window.location.href = "/admin";
-
+      if (responseData) {
+        const { token } = responseData;
+        localStorage.setItem("token", token);
+        window.location.href = "/admin";
+      } else {
+        console.error("Token not found in response data", responseData);
+        setError(
+          "An error occurred during login. Please check your credentials.",
+        );
+      }
     } catch (error) {
       console.error("Login failed", error);
-
-      if (axios.isAxiosError(error) && error.response) {
-        if (error.response.status === 401) {
-          setError("Invalid credentials");
-        } else {
-          setError("An error occurred during login");
-        }
-      } else {
-        setError("An error occurred during login");
-      }
     }
   };
 
