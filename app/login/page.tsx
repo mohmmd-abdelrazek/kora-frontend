@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +10,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("https://kora-api-sfwh.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
