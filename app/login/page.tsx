@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://kora-api-8vzk.onrender.com/user", {
+      const response = await fetch("http://localhost:5000/getin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
