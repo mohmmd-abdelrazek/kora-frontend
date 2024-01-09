@@ -37,7 +37,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://kora-api-sfwh.onrender.com/retrieve/${sectionId}`,
+          `https://kora-api-8vzk.onrender.com/retrieve/${sectionId}`,
         );
         const data = await response.json();
 
@@ -60,7 +60,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
     const value = inputValue;
 
     try {
-      const response = await fetch("https://kora-api-sfwh.onrender.com/submit", {
+      const response = await fetch("https://kora-api-8vzk.onrender.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
     const value = "";
 
     try {
-      const response = await fetch("https://kora-api-sfwh.onrender.com/submit", {
+      const response = await fetch("https://kora-api-8vzk.onrender.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
