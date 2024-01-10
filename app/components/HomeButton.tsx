@@ -16,7 +16,7 @@ const HomeButton = () => {
         <span className="max-sm:hidden">
           {isHomePage ? "جدول المباريات" : "انضم إلى فريق"}
         </span>
-        <Image src={isHomePage ? schedule : team} alt="schedule" height={20} />
+        <Image className="w-auto" src={isHomePage ? schedule : team} alt="schedule" height={20} />
       </Link>
   )
 }

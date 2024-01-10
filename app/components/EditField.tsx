@@ -37,7 +37,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://kora-api-8vzk.onrender.com/retrieve/${sectionId}`,
+          `https://kora-api-053t.onrender.com/retrieve/${sectionId}`,
         );
         const data = await response.json();
 
@@ -60,13 +60,16 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
     const value = inputValue;
 
     try {
-      const response = await fetch("https://kora-api-8vzk.onrender.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://kora-api-053t.onrender.com/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ sectionId, inputIndex, value }),
         },
-        body: JSON.stringify({ sectionId, inputIndex, value }),
-      });
+      );
 
       const responseData = await response.json();
       if (responseData.success && value !== "") {
@@ -85,13 +88,16 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
     const value = "";
 
     try {
-      const response = await fetch("https://kora-api-8vzk.onrender.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://kora-api-053t.onrender.com/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ sectionId, inputIndex, value }),
         },
-        body: JSON.stringify({ sectionId, inputIndex, value }),
-      });
+      );
 
       const responseData = await response.json();
       if (responseData.success) {
@@ -106,10 +112,10 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="h-18 relative flex items-center justify-center gap-4"
+      className="h-14 relative flex items-center justify-center gap-4"
     >
       <label
-        className={`max-sm:text-md h-full w-24 text-right text-lg font-semibold text-white ${
+        className={`max-sm:text-sm h-full w-20 text-right text-md font-semibold text-white ${
           isDisabled && "text-gray-400"
         }`}
       >
@@ -126,7 +132,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
       <button
         type="submit"
         disabled={isDisabled}
-        className="w-30 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+        className="w-28 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
       >
         سجل
       </button>
@@ -135,7 +141,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
         type="button"
         disabled={!isDisabled}
         onClick={handleEdit}
-        className="w-30 absolute left-14 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+        className="w-28 absolute left-14 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
       >
         تعديل
       </button>
@@ -143,7 +149,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
         type="button"
         disabled={!isDisabled}
         onClick={handleDelete}
-        className="w-30 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+        className="w-28 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
       >
         حذف
       </button>

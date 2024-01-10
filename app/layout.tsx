@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
-import { useState } from "react";
-import Sidemenu from "./components/Sidemenu";
 
 export const metadata: Metadata = {
   title: "دوري شباب الوعي الإسلامي",

@@ -37,7 +37,7 @@ const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://kora-api-8vzk.onrender.com/retrieve/${sectionId}`,
+          `https://kora-api-053t.onrender.com/retrieve/${sectionId}`,
         );
         const data = await response.json();
 
@@ -60,13 +60,16 @@ const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
     const value = inputValue;
 
     try {
-      const response = await fetch("https://kora-api-8vzk.onrender.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://kora-api-053t.onrender.com/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ sectionId, inputIndex, value }),
         },
-        body: JSON.stringify({ sectionId, inputIndex, value }),
-      });
+      );
 
       const responseData = await response.json();
       if (responseData.success && value !== "") {
@@ -95,7 +98,7 @@ const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
         onChange={(e) => setInputValue(e.target.value)}
         disabled={isDisabled}
         placeholder="اكتب اسمك..."
-        className="text-md h-full flex-1 rounded-lg p-2 font-bold text-text focus:outline-accent disabled:bg-green-100 disabled:w-fit max-sm:min-w-0"
+        className="text-md h-full flex-1 rounded-lg p-2 font-bold text-text focus:outline-accent disabled:w-fit disabled:bg-green-100 max-sm:min-w-0"
       />
       <button
         type="submit"

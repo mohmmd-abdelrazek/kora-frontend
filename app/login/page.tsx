@@ -1,37 +1,41 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://kora-api-8vzk.onrender.com/getin", {
+      setLoading(true);
+
+      const response = await fetch("https://kora-api-053t.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-        credentials: "include",
       });
 
       const responseData = await response.json();
-      if (responseData) {
+
+      if (response.ok) {
         const { token } = responseData;
         localStorage.setItem("token", token);
         window.location.href = "/admin";
       } else {
-        console.error("Token not found in response data", responseData);
-        setError(
-          "An error occurred during login. Please check your credentials.",
-        );
+        console.error("Login failed", responseData);
+        setError("Invalid username or password. Please try again.");
       }
     } catch (error) {
       console.error("Login failed", error);
+      setError("An unexpected error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,6 +65,7 @@ const Login = () => {
         Login
       </button>
       {error && <p>{error}</p>}
+      {loading && <p>Loading...</p>}
     </form>
   );
 };

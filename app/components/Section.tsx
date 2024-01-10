@@ -8,7 +8,7 @@ type SectionPropes = {
 const Section = ({ sectionId, team }: SectionPropes) => {
   return (
     <div
-      className={`w-full overflow-hidden rounded-2xl shadow-md shadow-blue-400 md:max-w-[500px] ${
+      className={`w-full overflow-hidden rounded-2xl shadow-md shadow-blue-400 md:max-w-[400px] ${
         team !== sectionId && "hidden"
       }`}
     >
