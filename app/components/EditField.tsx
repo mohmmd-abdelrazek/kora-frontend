@@ -112,7 +112,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="h-14 relative flex items-center justify-center gap-4"
+      className="h-18 relative flex items-center justify-center gap-4"
     >
       <label
         className={`max-sm:text-sm h-full w-20 text-right text-md font-semibold text-white ${
@@ -132,7 +132,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
       <button
         type="submit"
         disabled={isDisabled}
-        className="w-28 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+        className="w-30 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-md font-medium text-white hover:bg-gradient-to-br disabled:hidden"
       >
         سجل
       </button>
@@ -141,7 +141,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
         type="button"
         disabled={!isDisabled}
         onClick={handleEdit}
-        className="w-28 absolute left-14 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+        className="w-30 absolute left-16 items-center rounded-lg bg-slate-800 px-2 py-1 text-md font-medium text-white hover:bg-gradient-to-br disabled:hidden"
       >
         تعديل
       </button>
@@ -149,7 +149,7 @@ const EditField = ({ sectionId, inputIndex }: EditFieldPropes) => {
         type="button"
         disabled={!isDisabled}
         onClick={handleDelete}
-        className="w-28 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+        className="w-30 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-md font-medium text-white hover:bg-gradient-to-br disabled:hidden"
       >
         حذف
       </button>

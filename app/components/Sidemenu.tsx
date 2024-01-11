@@ -6,7 +6,7 @@ type SideProps = {
 
 const Sidemenu = ({ handleClick }: SideProps) => {
   return (
-    <div className="absolute z-10 flex h-screen w-full flex-col gap-6 bg-green-600 opacity-90">
+    <div className="absolute z-10 flex h-full w-full flex-col gap-6 bg-green-600 opacity-90">
       <div>
         <button
           onClick={handleClick}

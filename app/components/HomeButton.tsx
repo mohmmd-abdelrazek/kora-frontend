@@ -10,13 +10,13 @@ const HomeButton = () => {
 
   return (
     <Link
-        className="bg-blue-700 w-fit text-white text-lg hover:bg-accent hover:text-text flex gap-3 rounded-lg px-4 py-2"
+        className="bg-blue-700 w-fit text-white text-md hover:bg-accent hover:text-text flex gap-3 rounded-lg px-4 py-2"
         href={isHomePage ? "/matches-table" : "/"}
       >
         <span className="max-sm:hidden">
-          {isHomePage ? "جدول المباريات" : "انضم إلى فريق"}
+          {isHomePage ? "جدول المباريات" : "الصفحة الرئيسية"}
         </span>
-        <Image className="w-auto" src={isHomePage ? schedule : team} alt="schedule" height={20} />
+        <Image className="w-auto" src={isHomePage ? schedule : team} alt="schedule" height={15} />
       </Link>
   )
 }

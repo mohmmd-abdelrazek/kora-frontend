@@ -103,7 +103,7 @@ const InputField = ({ sectionId, inputIndex }: inputFieldPropes) => {
       <button
         type="submit"
         disabled={isDisabled}
-        className="w-30 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-sm font-medium text-white hover:bg-gradient-to-br disabled:hidden"
+        className="w-30 absolute left-1 items-center rounded-lg bg-slate-800 px-2 py-1 text-md font-medium text-white hover:bg-gradient-to-br disabled:hidden"
       >
         سجل
       </button>
