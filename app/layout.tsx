@@ -3,8 +3,8 @@ import "./globals.css";
 import Header from "./components/Header";
 
 export const metadata: Metadata = {
-  title: "دوري شباب الوعي الإسلامي",
-  description: "دوري شباب الوعي الإسلامي",
+  title: "دوري الشباب",
+  description: "دوري الشباب",
 };
 
 export default function RootLayout({
