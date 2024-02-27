@@ -7,7 +7,7 @@ const MatchesTable = () => {
     { id: 5, from: "8:00", to: "8:10", team1: "فريق 1", team2: "فريق 3" },
     { id: 6, from: "8:15", to: "8:25", team1: "فريق 2", team2: "فريق 3" },
     { id: 7, from: "8:30", to: "8:40", team1: "فريق 1", team2: "فريق 2" },
-    { id: 4, from: "8:45", to: "8:55", team1: "فريق 1", team2: "فريق 3" },
+    { id: 8, from: "8:45", to: "8:55", team1: "فريق 1", team2: "فريق 3" },
   ];
 
   return (
