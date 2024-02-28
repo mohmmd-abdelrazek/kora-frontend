@@ -14,6 +14,7 @@ const Header = () => {
   if (error) return <div className="text-center text-red-600">Failed to load user data.</div>;
 
   const isLoggedIn = data?.isAuthenticated;
+console.log(isLoggedIn)
 
   const handleLogout = async () => {
     try {
