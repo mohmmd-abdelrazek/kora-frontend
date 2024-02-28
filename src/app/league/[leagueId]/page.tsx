@@ -30,7 +30,7 @@ const League = () => {
   }, [teams, selectedTeam]);
 
   if (error || ownerError || leagueError)
-    return <div>{error.response?.data.message || "Failed to load teams."}</div>;
+    return <div>{error?.response?.data.message || "Failed to load teams."}</div>;
   if (isLoading || ownerLoading || leagueLoading)
     return (
       <div>
